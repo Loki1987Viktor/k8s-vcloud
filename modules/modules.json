@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"vcloud-k8s-cluster","Source":"git::https://github.com/Loki1987Viktor/k8s-vcloud.git?ref=main","Dir":".terraform/modules/vcloud-k8s-cluster"}]}
