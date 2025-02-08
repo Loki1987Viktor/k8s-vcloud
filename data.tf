@@ -25,7 +25,7 @@ data "vcd_nsxt_edgegateway" "egw" {
   name = var.vcloud.edgegw
 }
 
-data "template_file" "cloudinit_dvm" {
+data "templatefile" "cloudinit_dvm" {
 template = file("${path.module}/templates/userdata_dvm.yaml")
   vars = {
 
@@ -130,7 +130,7 @@ template = file("${path.module}/templates/userdata_dvm.yaml")
 }
 
 
-data "template_file" "cloudinit_master_node" {
+data "templatefile" "cloudinit_master_node" {
 #  template = file("./templates/userdata.yaml") 
 template = file("${path.module}/templates/userdata_m.yaml")
   vars = {
@@ -158,7 +158,7 @@ template = file("${path.module}/templates/userdata_m.yaml")
   }
 }
 
-data "template_file" "cloudinit_worker_node" {
+data "templatefile" "cloudinit_worker_node" {
 template = file("${path.module}/templates/userdata_w.yaml")
   vars = {
 
