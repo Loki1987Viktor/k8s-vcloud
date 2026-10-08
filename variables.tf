@@ -19,7 +19,7 @@ variable "vcloud" {
         csi_svc              = string #vcloud_csiadmin_username        
         csi_svc_pwd          = string #vcloud_csiadmin_password
         vapp_name            = string
-        catalog_name         = string #vcloud_catalogname 
+        catalogname          = string #vcloud_catalogname 
         vm_template_name     = string #vcloud_vmtmplname 
         orgvnet_name         = string #vcloud_orgvnet
         edgegw               = string #vcloud_edgegw
