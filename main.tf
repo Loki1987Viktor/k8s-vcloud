@@ -61,13 +61,14 @@ resource "vcd_vapp_vm" "k8s_masters_vms" {
                       vcd_vapp_vm.k8s_workers_vms]
   vapp_name        = vcd_vapp.k8s_mgmt_vapp.name
   name             = "${var.project.owner_org}-${var.project.name}-${var.project.env_name}-mst-${format("%02s", (count.index + 1))}"
+  computer_name    = "${var.project.owner_org}-${var.project.name}-${var.project.env_name}-mst-${format("%02s", (count.index + 1))}"
   count            = var.vms_config.masters.vm_count
 
   catalog_item     = data.vcd_catalog_item.vm_template.id
   #vapp_template_id  = data.vcd_catalog_item.vm_template.id
   #catalog_name     = data.vcd_catalog.vcd_dp_linux.name
   #template_name    = var.vcloud.vm_template_name
-  hardware_version = "vmx-15"
+  hardware_version = "vmx-19"
   cpus             = var.vms_config.masters.vm_cpu_count
   memory           = var.vms_config.masters.vm_ram_size
   cpu_cores        = 1
@@ -102,13 +103,14 @@ resource "vcd_vapp_vm" "k8s_workers_vms" {
   
   vapp_name        = vcd_vapp.k8s_mgmt_vapp.name
   name             = "${var.project.owner_org}-${var.project.name}-${var.project.env_name}-wrk-${format("%02s", (count.index + 1))}"
+  computer_name    = "${var.project.owner_org}-${var.project.name}-${var.project.env_name}-mst-${format("%02s", (count.index + 1))}"
   count            = var.vms_config.workers.vm_count
 
   vapp_template_id  = data.vcd_catalog_item.vm_template.id
 
   #catalog_name     = data.vcd_catalog.vcd_dp_linux.name
   #template_name    = var.vcloud.vm_template_name
-  hardware_version = "vmx-15" #Test version    
+  hardware_version = "vmx-19" #Test version    
   cpus             = var.vms_config.workers.vm_cpu_count
   memory           = var.vms_config.workers.vm_ram_size
   cpu_cores        = 1
@@ -144,12 +146,13 @@ resource "vcd_vapp_vm" "dvm" {
   vapp_name        = vcd_vapp.k8s_mgmt_vapp.name
   #name             = "${var.vms.dvm.pref}"
   name             = "dvm"
+  computer_name    = "dvm"
   
   vapp_template_id  = data.vcd_catalog_item.vm_template.id
 
   #catalog_name     = data.vcd_catalog.vcd_dp_linux.name
   #template_name    = var.vcloud.vm_template_name
-  hardware_version = "vmx-15"
+  hardware_version = "vmx-19"
   cpus             = var.vms_config.dvm.vm_cpu_count
   memory           = var.vms_config.dvm.vm_ram_size
   cpu_cores        = 1
