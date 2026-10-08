@@ -1,31 +1,13 @@
 data "vcd_catalog" "vcd_dp_linux" {
     org  = var.vcloud.orgname
-    name = var.vcloud.catalog_name
+    name = var.vcloud.catalogname
 }
 
-# data "vcd_catalog" "vcd_dp_linux" {
-#   name      = var.vcloud.catalogname
-#   catalog   = var.vcloud_catalogname
-# }
-
-data "vcd_catalog_item" "vm_template" {
-  org     = var.vcloud.orgname
-  name    = var.vcloud.vm_template_name
-  catalog = data.vcd_catalog.vcd_dp_linux.name
-  # catalog = data.vcd_catalog.my-cat.name
-}
-
-# data "vcd_catalog" "my-cat" {
-#   org  = var.vcloud.orgname
-#   name = var.vcloud.catalog_name
-# }
-
-
-data "vcd_nsxt_edgegateway" "egw" {
+data "vcd_edgegateway" "egw" {
   name = var.vcloud.edgegw
 }
 
-data "templatefile" "cloudinit_dvm" {
+data "template_file" "cloudinit_dvm" {
 template = file("${path.module}/templates/userdata_dvm.yaml")
   vars = {
 
@@ -39,7 +21,7 @@ template = file("${path.module}/templates/userdata_dvm.yaml")
     vcloud_csiadmin_password   = var.vcloud.csi_svc_pwd
     vcloud_url                 = var.vcloud.server_fqdn
     vcloud_ip                  = var.vcloud.server_ip
-    vcloud_catalogname         = var.vcloud.catalog_name
+    vcloud_catalogname         = var.vcloud.catalogname
     vcloud_vmtmplname          = var.vcloud.vm_template_name
     vcloud_orgvnet             = var.vcloud.orgvnet_name
     vapp_name                  = var.vcloud.vapp_name
@@ -130,7 +112,7 @@ template = file("${path.module}/templates/userdata_dvm.yaml")
 }
 
 
-data "templatefile" "cloudinit_master_node" {
+data "template_file" "cloudinit_master_node" {
 #  template = file("./templates/userdata.yaml") 
 template = file("${path.module}/templates/userdata_m.yaml")
   vars = {
@@ -158,7 +140,7 @@ template = file("${path.module}/templates/userdata_m.yaml")
   }
 }
 
-data "templatefile" "cloudinit_worker_node" {
+data "template_file" "cloudinit_worker_node" {
 template = file("${path.module}/templates/userdata_w.yaml")
   vars = {
 
