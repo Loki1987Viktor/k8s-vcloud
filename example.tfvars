@@ -21,6 +21,7 @@ vcloud = {
     vm_template_name     = "ubuntu22.04-uuid-enabled-v1" #shoud be precreated and preconfigured
     orgvnet_name         = "my_vcloud_org_vnet_name" #shoud be precreated and configured according desired IP plan
     edgegw               = "my_vcloud_edgegw"        #should be provided by vcloud provider
+    alb_service_engine_group = "LB-POD01_Shared_SE01" #for LB nsxt
 }
 
 # do not add this into yor tfvars file until you want to change default IP distribution
