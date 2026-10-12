@@ -24,7 +24,8 @@ variable "vcloud" {
         orgvnet_name         = string #vcloud_orgvnet
         edgegw               = string #vcloud_edgegw
         env_type             = optional(string,"public") # default     = "public"
-        lbvm_count           = optional(string,"0") 
+        lbvm_count           = optional(string,"0")
+        alb_service_engine_group = string
     })
 }
 
