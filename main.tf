@@ -101,7 +101,7 @@ resource "vcd_vapp_vm" "k8s_workers_vms" {
   
   vapp_name        = vcd_vapp.k8s_mgmt_vapp.name
   name             = "${var.project.owner_org}-${var.project.name}-${var.project.env_name}-wrk-${format("%02s", (count.index + 1))}"
-  computer_name    = "${var.project.owner_org}-${var.project.name}-${var.project.env_name}-mst-${format("%02s", (count.index + 1))}"
+  computer_name    = "${var.project.owner_org}-${var.project.name}-${var.project.env_name}-wrk-${format("%02s", (count.index + 1))}"
   count            = var.vms_config.workers.vm_count
 
   catalog_name     = data.vcd_catalog.vcd_dp_linux.name
