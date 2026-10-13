@@ -105,8 +105,12 @@ resource "vcd_nsxt_alb_pool" "ingress_http_pool" {
     var.kubernetes.ingress.controller_nodeport_http
   )
 
+  # Привязка системных мониторов
   health_monitor {
-    type = "TCP"
+    name = "System-Ping"
+  }
+  health_monitor {
+    name = "System-TCP"
   }
 
   member {
@@ -176,8 +180,12 @@ resource "vcd_nsxt_alb_pool" "ingress_https_pool" {
   algorithm    = "ROUND_ROBIN"
   default_port = 30443
 
+  # Привязка системных мониторов
   health_monitor {
-    type = "TCP"
+    name = "System-Ping"
+  }
+  health_monitor {
+    name = "System-TCP"
   }
 
   member {
