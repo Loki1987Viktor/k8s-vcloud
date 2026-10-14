@@ -22,7 +22,7 @@ apt:
     }
 
 package_update: true
-packages_upgrade: true
+#packages_upgrade: true
 packages:
   - net-tools
   - nmap
@@ -30,7 +30,7 @@ packages:
   - tree
   - openssh-server
   - sshpass
- # - ansible
+  - ansible
  # - ansible-core
 
 write_files:
