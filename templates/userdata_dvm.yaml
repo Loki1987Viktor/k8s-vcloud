@@ -56,7 +56,7 @@ apt:
     }
 
 package_update: true
-packages_upgrade: true
+#packages_upgrade: true
 packages:
   - net-tools
   - nmap
